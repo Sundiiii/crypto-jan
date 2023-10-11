@@ -1,0 +1,26 @@
+.heder{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 3rem;
+}
+.heder h1{
+    font-size: 1.2rem;
+    margin: 2rem;
+    font-weight: 600;
+}
+.links{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+}
+.link{
+    font-size: 1rem;
+    color: rgb(59, 113, 59);
+    text-decoration: none;
+}
+.link:hover{
+    color: white;
+    transform: all 0.5sec;
+}
