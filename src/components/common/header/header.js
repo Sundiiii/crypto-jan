@@ -1,6 +1,8 @@
 import React from "react";
 import "./header.css";
 import Button from "../button/button";
+import TemporaryDrawer from "./drawer";
+
 export default function Heder(){
 
 
@@ -15,6 +17,9 @@ export default function Heder(){
                 <a href="/watchlist"><p className="link">watchlist</p></a>
             
                 <a href="/dashboard"><Button text={"dashboard"} onclick={()=>alert("hiii")}/></a>
+            </div>
+            <div className="drawer-container">
+                <TemporaryDrawer/>
             </div>
         </div>
 
