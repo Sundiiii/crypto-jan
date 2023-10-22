@@ -1,0 +1,14 @@
+.t-row{
+    width: 100%;
+
+    column-gap: 3px;
+}
+td{    
+ margin: 0rem 3rem;
+ padding: 2px;
+}
+.val{
+    color: rgb(238, 212, 64);
+    /* margin-left: 1rem; */
+    padding-left: 2rem;
+}

@@ -1,0 +1,9 @@
+.pagination-container{
+    width: 80%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: rgb(158, 196, 228);
+    opacity: 0.5;
+    color: rgb(130, 20, 249);
+}

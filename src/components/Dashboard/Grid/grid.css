@@ -1,0 +1,100 @@
+.coins-cointainer{
+  /* display: flex;
+  justify-content: flex-start;
+  align-items: flex-start; */
+  display:block;
+  width: 180px;
+  height: 180px;
+  gap: 0.5rem;
+  background-color: rgb(101, 109, 115);
+  border-radius: 10px;
+}
+.coin-c1{
+    display: flex;
+    flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+}
+.coin-img{
+    height: 3rem;
+    width: 3rem;
+  border-radius: 50%;
+}
+.coin-symbol{
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #fff;
+    margin: 0rem;
+    margin-bottom: 0.2rem;
+}
+.coin-name{
+    color: #fff;   
+    font-weight: 300;
+    margin: 0rem;
+    margin-bottom: 0.2rem;
+}
+.chip-flex{
+    display: flex;
+    gap: 2rem;
+    margin-top:0.5rem;
+}
+.pricce-chip{
+    border: 0.1rem solid green;
+    border-radius: 2rem;
+    padding:0.0rem 0.6rem;   margin:3px;
+
+   color: green;
+   background-color: rgb(17, 16, 16);
+    }
+.pricce-chip1{
+    border: 0.1rem solid rgb(242, 33, 6);
+    border-radius: 2rem;
+    padding:0.0rem 0.6rem;
+   color: rgb(239, 69, 39);
+   margin:0px 2px;
+   background-color: rgb(40, 39, 39);
+    }
+    .pricce-chip:hover{
+       background-color: green;
+       color: white;
+       transition: all 3sec;
+    }
+    .pricce-chip1:hover{
+       background-color: rgb(246, 56, 31);
+       color: white;
+       transition: all 3sec;
+       
+    }
+    .arow{
+        border-radius:50%;  
+         padding: 2px;     
+    }
+    .coin-price{
+        color: rgb(32, 236, 32);
+        padding-left: 0.5rem;
+        bottom:40px;
+
+    }
+    .coin-price1{
+        bottom:4rem;
+        color: rgb(247, 28, 28);
+        padding-left: 0.5rem;
+        margin: 0;
+    }
+ .volume{
+    position:relative;
+    bottom: 15px;
+    font-weight: 100;
+    font-size: 0.8rem;
+    margin-left:0.5rem;
+    color: bisque;
+}
+.volume1{
+    position:relative;
+    font-size: 0.8rem;
+    font-weight: 100;
+    bottom: 25px;
+    margin-left:0.5rem;
+    color: bisque;
+ }

@@ -1,0 +1,14 @@
+.grid-name{
+    display:flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 3rem;
+}
+.btn1{
+    width:50%;
+display: flex;
+justify-content:center;
+margin-left:6rem;
+}
