@@ -3,8 +3,9 @@
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem 3rem;
-    /* position: sticky; */
+     position: sticky;
     top: 0;
+    z-index:1;
 }
 
 .heder h1 {
@@ -31,6 +32,18 @@
 }
 .drawer-container{
     display: none;
+}
+[data-theme="light"]{
+    --white:#ffffff;
+    --black:#111;
+    --gray:#888;
+    --darkgray:#1b1b1b;
+}
+[data-theme="dark"]{
+    --white:#111;
+    --black:#ffffff;
+    --gray:#888;
+    --darkgray:#f3f3f3;
 }
 
 @media only screen and (max-width: 1000px) {
