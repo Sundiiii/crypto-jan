@@ -21,7 +21,16 @@ export default function maincomponent() {
           url: "https://criptof4.netlify.app ",
           title: "crypto tracker .",
         }}
-  onClick={() => toast('🦄 Wow ')}
+  onClick={() => toast.success('app shared',{
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    })}
       >
       <Button text={"Share"} outlined={true} />
    </RWebShare>  

@@ -1,11 +1,18 @@
-import React from 'react'
+import React,{useState} from 'react'
 import MovingRoundedIcon from '@mui/icons-material/MovingRounded';
 import TrendingDownRoundedIcon from '@mui/icons-material/TrendingDownRounded';
 import "./list.css"
 import Coin1 from '../../../pages/Coin';
 import { Tooltip } from '@mui/material';
 import {motion} from "framer-motion";
+import StarsIcon from '@mui/icons-material/Stars';
+import StarOutlineIcon from '@mui/icons-material/StarOutline';
+import { removeItemtoWatchlist } from '../../functions/removeItemtoWatchlist';
+import { SaveItemtoWatchlist } from '../../functions/SaveItemtoWatchlist';
 function List({coin,key,delay}) {
+    const watchlist=JSON.parse(localStorage.getItem("watchlist"));
+    let X=watchlist.includes(coin.id);
+    const [Iscoinadded,SetIsCoinAdded]=useState(X);
   return ( 
      <a href={`/Coin1/${coin.id}`}>   
         <motion.tr className='t-row'
@@ -58,6 +65,20 @@ function List({coin,key,delay}) {
                         <td className="val">
                            Market cap: {coin.market_cap.toLocaleString()}
                         </td> 
+                        <td> <div className="watchlist-icon1"
+   onClick={(e)=>{
+    if(Iscoinadded){
+//remove coin
+SetIsCoinAdded(false);
+removeItemtoWatchlist(e , coin.id,SetIsCoinAdded);
+   }else{
+    SetIsCoinAdded(true);
+       SaveItemtoWatchlist(e , coin.id);
+}    
+}}
+    >
+              { Iscoinadded? <StarsIcon/>: <StarOutlineIcon/>}
+                </div></td>
         </motion.tr> 
          </a>   
   )

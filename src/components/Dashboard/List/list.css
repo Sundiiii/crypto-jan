@@ -12,3 +12,10 @@ td{
     /* margin-left: 1rem; */
     padding-left: 2rem;
 }
+.watchlist-icon1{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    color: rgb(0, 255, 60);
+ }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import MovingRoundedIcon from '@mui/icons-material/MovingRounded';
 import TrendingDownRoundedIcon from '@mui/icons-material/TrendingDownRounded';
 import "./grid.css";
@@ -7,11 +7,15 @@ import {motion} from "framer-motion";
 import Coin1 from '../../../pages/Coin';
 import { Tooltip } from '@mui/material';
 import {  toast } from 'react-toastify';
-
+import { removeItemtoWatchlist } from '../../functions/removeItemtoWatchlist';
 import StarsIcon from '@mui/icons-material/Stars';
-function grid({ coin,delay}) {
+import StarOutlineIcon from '@mui/icons-material/StarOutline';
+function Grid({ coin,delay}) {
+    const watchlist=JSON.parse(localStorage.getItem("watchlist"));
+    let X=watchlist.includes(coin.id);
+    const [Iscoinadded,SetIsCoinAdded]=useState(X);
     return (
- <a href={`/Coin1/${coin.id}`}>
+ <a href={`/coin/${coin.id}`}>
 <motion.div className={`coins-cointainer pricce-chip ${coin.price_change_percentage_24h <0 
 && "pricce-chip1"}`}
 initial={{opacity:0,y:50}}
@@ -26,9 +30,19 @@ transition={{duration:0.5, delay:delay}}>
                     <p className="coin-symbol">{coin.symbol}</p>
                     <p className="coin-name">{coin.name}</p>
                 </div>
-                <div className="watchlistAdd"
-   onClick={(e)=>SaveItemtoWatchlist(e,coin.id)}>
-                <StarsIcon/>
+                <div className="watchlist-icon"
+   onClick={(e)=>{
+    if(Iscoinadded){
+//remove coin
+SetIsCoinAdded(false);
+removeItemtoWatchlist(e , coin.id,SetIsCoinAdded);
+   }else{
+    SetIsCoinAdded(true);
+       SaveItemtoWatchlist(e , coin.id);
+}    
+}}
+    >
+              { Iscoinadded? <StarsIcon/>: <StarOutlineIcon/>}
                 </div>
      </div>
 
@@ -79,4 +93,4 @@ transition={{duration:0.5, delay:delay}}>
    )
 }
 
-            export default grid
+            export default Grid

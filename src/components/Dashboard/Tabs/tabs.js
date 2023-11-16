@@ -37,7 +37,7 @@ CunvertNum();
             <div>
               <h1 style={{textAlign:"center"}}>OOPs..Couldent find the coins your looking for  </h1>
              <div className="btn1">
-              <Button text={"Clear Search"} onclick={()=>setSearch("")}/>
+              <Button text={"Clear Search"} onClick={()=>setSearch("")}/>
               </div>
               </div>
           )
