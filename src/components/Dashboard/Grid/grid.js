@@ -4,7 +4,7 @@ import TrendingDownRoundedIcon from '@mui/icons-material/TrendingDownRounded';
 import "./grid.css";
 import { SaveItemtoWatchlist } from '../../functions/SaveItemtoWatchlist';
 import {motion} from "framer-motion";
-import Coin1 from '../../../pages/Coin';
+import Coin from '../../../pages/Coin';
 import { Tooltip } from '@mui/material';
 import {  toast } from 'react-toastify';
 import { removeItemtoWatchlist } from '../../functions/removeItemtoWatchlist';
@@ -15,7 +15,7 @@ function Grid({ coin,delay}) {
     let X=watchlist.includes(coin.id);
     const [Iscoinadded,SetIsCoinAdded]=useState(X);
     return (
- <a href={`/coin/${coin.id}`}>
+ <a href={`/Coin/${coin.id}`}>
 <motion.div className={`coins-cointainer pricce-chip ${coin.price_change_percentage_24h <0 
 && "pricce-chip1"}`}
 initial={{opacity:0,y:50}}

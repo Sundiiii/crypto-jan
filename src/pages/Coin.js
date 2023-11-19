@@ -15,24 +15,26 @@ import SelectDays from '../components/coinpage/SelectDays';
 import ToggleComponents from '../components/coinpage/togglePrice';
 const Coin1 = () => {
 
-  const { id } = useParams();
-  const [coin, setCoin] = useState([]);
-  const [chartdata, setChart_data] = useState({ labels: [], dataset: [{}] });
+  const {id} = useParams();
+  const [coin, setCoin] = useState({});
+  // const [chartdata, setChart_data] = useState({ labels: [], dataset: [{}] });
+  const [chartdata,setChart_data]=useState({ labels:[],datasets:[{}]});
+
   const [err, seterr] = useState(false);
   const [loading, setloader] = useState(true);
-  const [days, setdays] = useState(10);
-  const [priceType, setpriceType] = useState('left');
+  const [days, setdays] = useState(30);
+  const [priceType, setpriceType] = useState('prices');
 
-  const handleChange = async (event) => {
-    setloader(true);
-    setdays(event.target.value);
-    const prices = await GetPrices(id, event.target.value);
-    if (prices) {
-      SetingChartData(setChart_data, prices);;
-      setloader(false);
-    }
-  };
-  const handlePricetypechange = async(event) => {
+  // const handleChange = async (event) => {
+  //   setloader(true);
+  //   setdays(event.target.value);
+  //   const prices = await GetPrices(id, event.target.value);
+  //   if (prices) {
+  //     SetingChartData(setChart_data, prices);;
+  //     setloader(false);
+  //   }
+  // };
+   const handlePricetypechange = async(event) => {
     setloader(true);
     setpriceType(event.target.value);
     const prices = await GetPrices(id,days, event.target.value);
@@ -40,23 +42,34 @@ const Coin1 = () => {
       SetingChartData(setChart_data, prices);;
       setloader(false);
     } 
-  };
+   };
+   const handleDaysChange = async(event) => {
+    setloader(true);
+    setdays(event.target.value);
+    const prices = await GetPrices(id, event.target.value, priceType);
+    if (prices) {
+      SetingChartData(setChart_data, prices);;
+      setloader(false);
+    } 
+   };
 
-  useEffect(() => { if (id) getData() }, [id]);
+   useEffect(() => { 
+    if (id) {getData()}
+   }, [id]);
 
   const getData = async () => {
-    setloader(true);
-    let coinData = await getcoinData(id);
+   setloader(true);
+   let coinData = await getcoinData(id);
     SettingcoinObj(coinData, setCoin)
-    if (coinData) {
-      const prices = await GetPrices(id, days,priceType);
-      if (prices) {
-        SetingChartData(setChart_data, prices);;
-      }
+   if (coinData) {
+    const prices = await GetPrices(id, days,priceType);
+     if (prices) {
+      SetingChartData(setChart_data, prices);;
+     }
       setloader(false);
       seterr(false);
-    }
-
+   }
+  }
     // axios.get(`https://api.coingecko.com/api/v3/coins/${id}`)
     //   .then((response) => {
     //     // console.log(response.data);          
@@ -114,7 +127,7 @@ const Coin1 = () => {
     //       seterr(true);
     //       setloader(false);
     //     });
-  }
+  // }
   // const chartdata = {
   //   labels:["mon", "Tue", "Wed", "Tha", "Fra"],
   //   datasets: [{
@@ -124,27 +137,27 @@ const Coin1 = () => {
 
   return (
     <div>
-      <Heder />
+      <Heder />      
       {
-        !err && !loading && coin.id ? (
-          <>
+         !err && !loading && coin.id ? (
+           <>
             <List coin={coin} delay={0.2} />
-            <div className="coinchart">
-              <SelectDays day={days} handleChange={handleChange} />
-              <ToggleComponents priceType={priceType} handlePricetypechange={handlePricetypechange} />
-              < Coinpage_chart chartdata={chartdata} />
-            </div>
+              <div className="coinchart">
+              <SelectDays days={days} handleDaychange={handleDaysChange} />
+               <ToggleComponents priceType={priceType} handlePricetypechange={handlePricetypechange} />
+               < Coinpage_chart chartdata={chartdata} />
+           </div> 
             <Info title={coin.name} desc={coin.desc} />
-          </>
-        ) : err ?
+           </>
+         ) : err ?
           (
-            <div>
-              <h1 style={{ textAlign: "center" }}>OOPs..Couldent find the coins your looking for  </h1>
-              <div className="btn1">
-                <a href='/Dashboard'>
-                  <Button text="Dashboard" /> </a>
+              <div>
+               <h1 style={{ textAlign: "center" }}>OOPs..Couldent find the coins your looking for  </h1>
+               <div className="btn1">
+                 <a href='/Dashboard'>
+                <Button text="Dashboard" /> </a>
               </div>
-            </div>
+             </div>
           )
           : (<Loader />)
       }
